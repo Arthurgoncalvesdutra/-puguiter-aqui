@@ -34,8 +34,8 @@ function getData() {
                         message_with_tag = "<h4 class='message_h4'>" + msg + "</h4>";
                         like_button = "<button class='btn btn-warning' id=" + firebaseMessageId + " value=" + like + " onclick='updateLike(this.id)'>";
                         span_with_tag = "<span class='glyphicon glyphicon-thumbs-up'>Like: " + like + "</span></button><hr>";
-tig=name_with_tag+message_with_tag+like_button+span_with_tag;
-document.getElementById("output").innerHTML=tig;
+                        tig = name_with_tag + message_with_tag + like_button + span_with_tag;
+                        document.getElementById("output").innerHTML += tig;
 
                         //Fim do código
                   }
@@ -43,6 +43,18 @@ document.getElementById("output").innerHTML=tig;
       });
 }
 getData();
+
+function updateLike(id){
+      botao=id;
+      like=document.getElementById(botao).value;
+      atul_lik=Number(like)+1;
+
+      firebase.database().ref(roomName).child(id).update({
+            likes:updateLike
+      });
+
+}
+
 function logout() {
       localStorage.removeItem("userName");
       localStorage.removeItem("roomName");
