@@ -50,7 +50,7 @@ function updateLike(id){
       atul_lik=Number(like)+1;
 
       firebase.database().ref(roomName).child(id).update({
-            likes:updateLike
+            likes:atul_lik
       });
 
 }
